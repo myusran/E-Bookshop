@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center"
+    android:id="@+id/activity_register"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_register"
+    android:orientation="vertical"
+    tools:context="com.emotech.e_bookshop.Activity.RegisterActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/logo_emot"
+        android:id="@+id/imageView2"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"/>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text"
+                    android:hint="@string/username"
+                    android:inputType="textWebEditText"
+                    android:layout_gravity="center"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/input_login"
+                    android:textColorHint="@color/input_login_hint" />
+
+                <EditText
+                    android:id="@+id/firstname"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text"
+                    android:hint="@string/first"
+                    android:inputType="textWebEditText"
+                    android:layout_gravity="center"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/input_login"
+                    android:textColorHint="@color/input_login_hint" />
+
+                <EditText
+                    android:id="@+id/lastname"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text"
+                    android:hint="@string/last"
+                    android:inputType="textWebEditText"
+                    android:layout_gravity="center"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/input_login"
+                    android:textColorHint="@color/input_login_hint" />
+
+                <EditText
+                    android:id="@+id/phonenumber"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text"
+                    android:hint="@string/phone"
+                    android:inputType="phone"
+                    android:layout_gravity="center"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/input_login"
+                    android:textColorHint="@color/input_login_hint" />
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text"
+                    android:hint="@string/email"
+                    android:inputType="textWebEmailAddress"
+                    android:layout_gravity="center"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/input_login"
+                    android:textColorHint="@color/input_login_hint" />
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text"
+                    android:hint="@string/password"
+                    android:inputType="textWebPassword"
+                    android:layout_gravity="center"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/input_login"
+                    android:textColorHint="@color/input_login_hint" />
+
+                <EditText
+                    android:id="@+id/password2"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text"
+                    android:hint="@string/password2"
+                    android:inputType="textWebPassword"
+                    android:layout_gravity="center"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/input_login"
+                    android:textColorHint="@color/input_login_hint" />
+
+                <TextView
+                    android:text="Password Not Match"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:id="@+id/matchText" />
+
+                <Button
+                    android:id="@+id/btnregis"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dip"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_login"
+                    android:text="@string/btn_register"
+                    android:textColor="@color/btn_login" />
+
+                <Button
+                    android:id="@+id/btnLinkToLoginScreen"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dip"
+                    android:background="@null"
+                    android:text="@string/btn_back"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
