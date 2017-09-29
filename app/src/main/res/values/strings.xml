@@ -10,14 +10,15 @@
     <string name="btn_regist">Belum Terdaftar ? Daftar sekarang</string>
 
     //Activity Register
-    <string name="username">Username</string>
-    <string name="first">First Name</string>
-    <string name="last">Last Name</string>
-    <string name="phone">Number Phone</string>
-    <string name="email">Enter Your Email</string>
-    <string name="password">Enter Password</string>
+    <string name="username">Nama Pengguna</string>
+    <string name="first">Nama Depan</string>
+    <string name="last">Nama Belakang</string>
+    <string name="phone">Nomor Telepon</string>
+    <string name="address">Alamat Lengkap</string>
+    <string name="email">Masukkan Email Anda</string>
+    <string name="password">Masukkan Password Anda</string>
     <string name="btn_register">Sign Up</string>
-    <string name="password2">Retype Password</string>
+    <string name="password2">Ulangi Password Anda</string>
     <string name="btn_back">Already Have an Account? Login Now!</string>
     <string name="title_activity_main">MainActivity</string>
 
@@ -26,5 +27,29 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_tab">TabActivity</string>
+    <string name="title_activity_detail">Detail Buku</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+    //TabLayout
+    <string name="buku_baru">Buku Baru</string>
+    <string name="best_seller">Best Seller</string>
+
+    //List Item
+    <string name="thumbnail">Thumbnail</string>
+
+    //Detail Pribadi
+    <string name="nama_depan">Nama Depan</string>
+    <string name="nama_belakang">Nama Belakang</string>
+    <string name="nomor_telepon">Nomor Telepon</string>
+    <string name="alamat_lengkap">Alamat Lengkap</string>
+    <string name="btn_pribadi">Simpan Perubahan</string>
+
+    //Ubah Pass
+    <string name="password_lama">Password Lama</string>
+    <string name="password_baru">Password Baru</string>
+    <string name="ulangi_password">Ulangi Password Baru</string>
+    <string name="btn_ubahakun">Simpan Perubahan</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

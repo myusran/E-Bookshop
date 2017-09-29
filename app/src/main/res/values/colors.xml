@@ -1,21 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#006666</color>
+    <color name="colorPrimaryDark">#006666</color>
+    <color name="colorAccent">#33cc33</color>
 
     //ActivityLogin
-    <color name="bg_register">#2e3237</color>
+    <color name="bg_register">#66ccff</color>
     <color name="white">#ffffff</color>
     <color name="input_login">#222222</color>
-    <color name="input_login_hint">#999999</color>
+    <color name="input_login_hint">#181b1b</color>
     <color name="input_register">#888888</color>
     <color name="input_register_bg">#3b4148</color>
     <color name="input_register_hint">#5e6266</color>
-    <color name="btn_login">#26ae90</color>
-    <color name="btn_login_bg">#eceef1</color>
+    <color name="btn_login">#ffffff</color>
+    <color name="btn_login_bg">#003366</color>
+    <color name="bg_login">#66ccff</color>
+    <color name="bg_no">#ffffff</color>
+    <color name="bg_detail">#4fbfa8</color>
+    <color name="bg_detail2">#006666</color>
+    <color name="bg_detail3">#009900</color>
+    <color name="bg_detail4">#cc00cc</color>
+
+    //Tab Layout
+    <color name="tab_inactive">#ebebe0</color>
+    <color name="tab_active">#ebebe0</color>
 
     //Color
-    <color name="pink">#FFC0CB</color>
+    <color name="pink">#33cccc</color>
     <color name="indigo">#4B0082</color>
+    <color name="birutua">#0066ff</color>
+    <color name="bg_dtbuku">#ff3300</color>
+    <color name="bg_dt2">#000000</color>
+
+    //Fragment Buku
+    <color name="FragmentBukuBackground">#F0F0F0</color>
+
+    //Floating Text
+    <color name="floating_text_color">#181b1b</color>
+    <color name="floating_text_error">#ff0000</color>
+    <color name="floating_text_match">#33ff33</color>
 </resources>

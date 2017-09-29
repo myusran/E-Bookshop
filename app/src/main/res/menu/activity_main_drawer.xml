@@ -3,33 +3,44 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_48dp"
+            android:title="Beranda" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_kategori"
+            android:icon="@drawable/list"
+            android:title="Kategori" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Pengguna">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_pesanan"
+                android:icon="@drawable/pesanan"
+                android:title="Pesanan Saya" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_like"
+                android:icon="@drawable/like"
+                android:title="Keinginan saya" />
+            <item
+                android:id="@+id/nav_akun"
+                android:icon="@drawable/akun"
+                android:title="Akun saya" />
+        </menu>
+    </item>
+
+
+    <item android:title="Status">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/logout"
+                android:title="Logout" />
+
+            <item
+                android:id="@+id/nav_login"
+                android:icon="@drawable/ic_exit_to_app_black_48dp"
+                android:title="Login" />
         </menu>
     </item>
 

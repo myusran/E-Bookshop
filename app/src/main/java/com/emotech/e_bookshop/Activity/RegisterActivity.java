@@ -3,6 +3,8 @@ package com.emotech.e_bookshop.Activity;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,14 +36,16 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class RegisterActivity extends Activity {
 
     private static final String TAG = RegisterActivity.class.getSimpleName();
     private Button btnregis, btnback;
-    private EditText username, firstname, lastname, phone, email, password, password2;
+    private EditText username, firstname, lastname, phone, alamat, email, password, password2;
     private TextView matchtext;
 
-    private ProgressDialog pDialog;
+    private SweetAlertDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
     /**
@@ -59,6 +63,7 @@ public class RegisterActivity extends Activity {
         firstname = (EditText) findViewById(R.id.firstname);
         lastname = (EditText) findViewById(R.id.lastname);
         phone = (EditText) findViewById(R.id.phonenumber);
+        alamat = (EditText) findViewById(R.id.alamat);
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         password2 = (EditText) findViewById(R.id.password2);
@@ -68,10 +73,6 @@ public class RegisterActivity extends Activity {
         btnback = (Button) findViewById(R.id.btnLinkToLoginScreen);
 
         matchtext.setVisibility(View.INVISIBLE);
-
-        // Progress dialog
-        pDialog = new ProgressDialog(this);
-        pDialog.setCancelable(false);
 
         // Session manager
         session = new SessionManager(getApplicationContext());
@@ -105,23 +106,24 @@ public class RegisterActivity extends Activity {
                 String strlast = lastname.getText().toString().trim();
                 String stremail = email.getText().toString().trim();
                 String strphone = phone.getText().toString().trim();
+                String stralamat = alamat.getText().toString().trim();
                 String strpassword = password.getText().toString().trim();
                 String strpassword2 = password2.getText().toString().trim();
 
-                if (!strname.isEmpty() && !stremail.isEmpty() && !strpassword.isEmpty()) {
+                if (!strname.isEmpty() && !stremail.isEmpty() && !strpassword.isEmpty() && !strfirst.isEmpty() && !strlast.isEmpty() && !strphone.isEmpty() && !stralamat.isEmpty()) {
 
                     if(!strpassword.equals(strpassword2)) {
-                        Toast.makeText(getApplicationContext(),
-                                "There's Something Worng With The Password!", Toast.LENGTH_LONG)
+                        new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.WARNING_TYPE)
+                                .setTitleText("Password tidak sama")
                                 .show();
                     }else {
                         strpassword = MD5(strpassword);
-                        registerUser(strname, strfirst, strlast, stremail, strphone, strpassword);
+                        registerUser(strname, strfirst, strlast, stremail, strphone, strpassword, stralamat);
                     }
 
                 }else{
-                    Toast.makeText(getApplicationContext(),
-                            "Please enter your details!", Toast.LENGTH_LONG)
+                    new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Tolong isi semua informasi")
                             .show();
                 }
             }
@@ -145,41 +147,12 @@ public class RegisterActivity extends Activity {
                 String strPass2 = password2.getText().toString();
 
                 if (strpassword.equals(strPass2)) {
-                    password2.setBackgroundResource(R.drawable.match_password);
-                    matchtext.setVisibility(View.INVISIBLE);
+                    password2.setError(null);
+                    //matchtext.setVisibility(View.INVISIBLE);
                 } else {
-                    password2.setBackgroundResource(R.drawable.wrong_password);
-                    matchtext.setVisibility(View.VISIBLE);
+                    password2.setError("Password tidak sama");
+                    //matchtext.setVisibility(View.VISIBLE);
                 }
-            }
-        });
-
-        password.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String strpassword = password.getText().toString();
-                String strPass2 = password2.getText().toString();
-
-                if(strPass2.length() > 0){
-                    if (strpassword.equals(strPass2)) {
-                        password2.setBackgroundResource(R.drawable.match_password);
-                        matchtext.setVisibility(View.INVISIBLE);
-                    } else {
-                        password2.setBackgroundResource(R.drawable.wrong_password);
-                        matchtext.setVisibility(View.VISIBLE);
-                    }
-                }
-
             }
         });
     }
@@ -189,12 +162,15 @@ public class RegisterActivity extends Activity {
      * email, password) to register url
      */
     private void registerUser(final String username, final String firstname, final String lastname, final String email, final String phone,
-                              final String password) {
+                              final String password, final String alamat) {
         // Tag used to cancel the request
         String tag_string_req = "req_register";
 
-        pDialog.setMessage("Registering ...");
-        showDialog();
+        pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        pDialog.setTitleText("Registering ...");
+        pDialog.setCancelable(false);
+        pDialog.show();
 
         StringRequest strReq = new StringRequest(Method.POST,
                 UrlConfig.URL_REGISTER, new Response.Listener<String>() {
@@ -202,7 +178,7 @@ public class RegisterActivity extends Activity {
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, "Register Response: " + response.toString());
-                hideDialog();
+               pDialog.dismiss();
 
                 try {
                     JSONObject jObj = new JSONObject(response);
@@ -210,33 +186,39 @@ public class RegisterActivity extends Activity {
                     if (!error) {
                         // User successfully stored in MySQL
                         // Now store the user in sqlite
+                        //JSONObject user = jObj.getJSONObject("user");
 
-                        JSONObject user = jObj.getJSONObject("user");
-                        String id = user.getString("id");
-                        String username = user.getString("username");
-                        String first = user.getString("firstname");
-                        String last = user.getString("lastname");
-                        String email = user.getString("email");
-                        String phone = user.getString("phone");
+                        //Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
 
-                        //Inserting row in users table
-                        db.addUser(id, username, first, last, email, phone);
+                        String errorTitle = jObj.getString("error_title");
+                        String errorText = jObj.getString("error_text");
+                        new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText(errorTitle)
+                                .setContentText(errorText)
+                                .setConfirmText("Ok")
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        // Launch login activity
+                                        Intent intent = new Intent(
+                                                RegisterActivity.this,
+                                                LoginActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                })
+                                .show();
 
-                        Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
-
-                        // Launch login activity
-                        Intent intent = new Intent(
-                                RegisterActivity.this,
-                                LoginActivity.class);
-                        startActivity(intent);
-                        finish();
                     } else {
 
                         // Error occurred in registration. Get the error
                         // message
-                        String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getApplicationContext(),
-                                errorMsg, Toast.LENGTH_LONG).show();
+                        String errorTitle = jObj.getString("error_title");
+                        String errorText = jObj.getString("error_text");
+                        new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(errorTitle)
+                                .setContentText(errorText)
+                                .show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -263,6 +245,7 @@ public class RegisterActivity extends Activity {
                 params.put("last", lastname);
                 params.put("email", email);
                 params.put("phone", phone);
+                params.put("alamat", alamat);
                 params.put("password", password);
 
                 return params;

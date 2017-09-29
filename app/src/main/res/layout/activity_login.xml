@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/bg_register"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="@color/pink"
     tools:context=".Activity.LoginActivity">
 
     <LinearLayout
@@ -14,48 +14,51 @@
         android:layout_gravity="center"
         android:orientation="vertical"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingRight="20dp"
+        android:weightSum="1">
 
         <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:src="@drawable/logo_emot"
-            android:id="@+id/imageView2" />
+            android:layout_weight="1.40" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/loginusername"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/edit_text"
-            android:hint="@string/hint_username"
             android:inputType="textEmailAddress"
-            android:layout_gravity="center"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:textColor="@color/input_login"
-            android:textColorHint="@color/input_login_hint" />
+            android:hint="Nama Pengguna"
+            android:ems="10"
+            android:id="@+id/loginusername"
+            android:textColor="@color/white"
+            android:selectAllOnFocus="false" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/loginpassword"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center"
-            android:background="@drawable/edit_text"
-            android:hint="@string/hint_password"
             android:inputType="textPassword"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:textColor="@color/input_login"
-            android:textColorHint="@color/input_login_hint" />
+            android:hint="Masukkan Password"
+            android:ems="10"
+            android:id="@+id/loginpassword"
+            android:textColor="@color/white" />
+
+        </android.support.design.widget.TextInputLayout>
 
         <!-- Login Button -->
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="300dp"
+            android:layout_width="267dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:layout_gravity="center"
@@ -65,15 +68,16 @@
 
         <!-- Link to Login Screen -->
 
-        <Button
-            android:id="@+id/btnLinkToRegisterScreen"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dip"
-            android:background="@null"
-            android:text="@string/btn_regist"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnLinkToRegisterScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:background="@null"
+        android:text="@string/btn_regist"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 </LinearLayout>

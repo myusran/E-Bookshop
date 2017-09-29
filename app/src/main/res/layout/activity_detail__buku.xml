@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.emotech.e_bookshop.Activity.Detail_Buku">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ProgressBar
+            android:id="@+id/progressBarXXX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressDrawable="@drawable/circular_progress_bar" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_detail_buku"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight=".1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="174dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:weightSum="1">
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="20dp"
+                        android:contentDescription="Property Image"
+                        android:layout_weight="0.93" />
+
+                    <TextView
+                        android:id="@+id/harga"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="Harga"
+                        android:textSize="20sp"
+                        android:textColor="@color/bg_dtbuku"
+                        android:paddingTop="10dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Penulis : "
+                        android:textColor="@color/btn_login_bg"
+                        android:textSize="20sp"
+                        android:paddingTop="10dp"/>
+
+                    <TextView
+                        android:id="@+id/penulis"
+                        android:layout_width="151dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:text="Penulis"
+                        android:layout_marginRight="10dp"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/judul"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="Judul Buku"
+                        android:textSize="18sp"
+                        android:textColor="@color/bg_dt2"
+                        android:paddingTop="20dp"/>
+
+                    <TextView
+                        android:id="@+id/isbn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:hint="E-ISBN"
+                        android:text="E-ISBN"
+                        android:textSize="15sp"
+                        android:paddingTop="10dp"/>
+
+                    <TextView
+                        android:id="@+id/penerbit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:hint="Penerbit"
+                        android:text="Penerbit"
+                        android:textSize="15sp"
+                        android:paddingTop="10dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <WebView
+                android:id="@+id/deskripsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="deskripsi" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".1"
+                android:layout_gravity="center"
+                android:background="@color/bg_detail"
+                android:text="Tambah ke keranjang"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".1"
+                android:background="@color/bg_detail4"
+                android:text="Tambah keinginan"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

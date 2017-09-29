@@ -26,6 +26,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class LoginActivity extends Activity {
 
     private static final String TAG = LoginActivity.class.getSimpleName();
@@ -131,9 +133,10 @@ public class LoginActivity extends Activity {
                         String last = user.getString("lastname");
                         String email = user.getString("email");
                         String phone = user.getString("phone");
+                        String alamat = user.getString("alamat");
 
                         // Inserting row in users table
-                        db.addUser(id, username, first, last, email, phone);
+                        db.addUser(id, username, first, last, email, phone, alamat);
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,
@@ -142,9 +145,12 @@ public class LoginActivity extends Activity {
                         finish();
                     } else {
                         // Error in login. Get the error message
-                        String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getApplicationContext(),
-                                errorMsg, Toast.LENGTH_LONG).show();
+                        String errorTitle = jObj.getString("error_title");
+                        String errorText = jObj.getString("error_text");
+                        new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(errorTitle)
+                                .setContentText(errorText)
+                                .show();
                     }
                 } catch (JSONException e) {
                     // JSON error
